@@ -21,7 +21,7 @@ MyRobotSafetyProperties::MyRobotSafetyProperties(ControlSystem &cs, double dt)
       doEmergency("Emergency!!! Entering Error State..."),
       doRobotStop("Robot is stopping..."),
       doGraspingStop("Robot is not gripping..."),
-      doShutDown("Robot is powering off....")
+      doShutDown("Robot is powering off...."),
       doDebug("Entering Debug Mode....")
 {
     eeros::hal::HAL &hal = eeros::hal::HAL::instance();
@@ -77,7 +77,7 @@ MyRobotSafetyProperties::MyRobotSafetyProperties(ControlSystem &cs, double dt)
     slMotorPowerOff.setInputActions({check(emergency, false, doEmergency), ignore(debug)});
     slMotorPowerOn.setInputActions({check(emergency, false, doEmergency), check(debug, false, doDebug)});
     slMoving.setInputActions({check(emergency, false, doEmergency), check(debug, false, doDebug)});
-    slGrasping.setInputActions({check(emergency, false, doEmergency), ignore(debug, false, doDebug)});
+    slGrasping.setInputActions({check(emergency, false, doEmergency), check(debug, false, doDebug)});
 
 
     // Define output actions for all levels

@@ -23,13 +23,17 @@ public:
 
     // Define all possible events
 
-    eeros::safety::SafetyLevel doInitialising;
-    eeros::safety::SafetyLevel doReleaseError;
-    eeros::safety::SafetyLevel doInitToMotorOff;
-    eeros::safety::SafetyLevel doMotorOn;
-    eeros::safety::SafetyLevel doMove;
-    eeros::safety::SafetyLevel doGrasping;
-    eeros::safety::SafetyLevel doEmergency;
+    eeros::safety::SafetyEvent doInitialising;
+    eeros::safety::SafetyEvent doReleaseError;
+    eeros::safety::SafetyEvent doInitToMotorOff;
+    eeros::safety::SafetyEvent doMotorOn;
+    eeros::safety::SafetyEvent doMove;
+    eeros::safety::SafetyEvent doGrasping;
+    eeros::safety::SafetyEvent doEmergency;
+    eeros::safety::SafetyEvent doRobotStop;
+    eeros::safety::SafetyEvent doGraspingStop;
+    eeros::safety::SafetyEvent doShutDown;
+    eeros::safety::SafetyEvent doDebug;
 
 private:
     // Define all critical outputs

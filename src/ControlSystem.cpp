@@ -2,23 +2,30 @@
 
 ControlSystem::ControlSystem(double dt)
     : myConstant(1.0), myGain(2.0),
-      timedomain("Main time domain", dt, true)
+    myIMS("quat1"),
+    myServo("servo1"),
+    timedomain("Main time domain", dt, true)
 {
     // Name all blocks
-    myConstant.setName("My constant");
     myGain.setName("My gain");
-    myIntegrator.setName("My Integrator");
+    myIMS.setName("My IMS Input");
+    myServo.setName("My Servo Output");
 
     // Name all signals
-    myConstant.getOut().getSignal().setName("My constant value");
-    myGain.getOut().getSignal().setName("My constant value multiplied with my gain");
+    //myIMS.getOut().getSignal().setName("Angle in Rad");
+    myServo.getOut().getSignal().setName("Angle in Rad");
+    myGain.getOut().getSignal().setName("Gain");
+
+    myGain.setGain(1);
 
     // Connect signals
-    myGain.getIn().connect(myConstant.getOut());
+    myIMS.getIn().connect(myGain.getOut());
+    myGain.getIn().connect(myServo.getOut());
 
     // Add blocks to timedomain
-    timedomain.addBlock(myConstant);
     timedomain.addBlock(myGain);
+    timedomain.addBlock(myIMS);
+    timedomain.addBlock(myServo);
 
     // Add timedomain to executor
     eeros::Executor::instance().add(timedomain);

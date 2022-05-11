@@ -5,6 +5,9 @@
 #include <eeros/core/Executor.hpp>
 #include <eeros/control/Constant.hpp>
 #include <eeros/control/Gain.hpp>
+#include <eeros/control/I.hpp>
+#include <eeros/control/PeripheralInput.hpp>
+#include <eeros/control/PeripheralOutput.hpp>
 
 using namespace eeros::control;
 
@@ -16,6 +19,10 @@ public:
     // Define Blocks
     Constant<> myConstant;
     Gain<> myGain;
+
+
+    PeripheralOutput<double> myIMS;
+    PeripheralInput<double> myServo;
 
     TimeDomain timedomain;
 };
