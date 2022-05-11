@@ -7,6 +7,7 @@ ControlSystem::ControlSystem(double dt)
     // Name all blocks
     myConstant.setName("My constant");
     myGain.setName("My gain");
+    myIntegrator.setName("My Integrator");
 
     // Name all signals
     myConstant.getOut().getSignal().setName("My constant value");
