@@ -8,6 +8,7 @@
 #include <eeros/control/I.hpp>
 #include <eeros/control/PeripheralInput.hpp>
 #include <eeros/control/PeripheralOutput.hpp>
+#include <eeros/control/Saturation.hpp>
 
 using namespace eeros::control;
 
@@ -18,11 +19,17 @@ public:
 
     // Define Blocks
     Constant<> myConstant;
-    Gain<> myGain;
+    Gain<> myGain1;
+    Gain<> myGain2;
+    Gain<> myGain3;
 
+    Saturation<double> limit;
 
-    PeripheralOutput<double> myIMS;
-    PeripheralInput<double> myServo;
+    PeripheralOutput<double> myMotor1;
+    PeripheralInput<double> myEncoder1;
+
+    PeripheralOutput<double> myMotor2;
+    PeripheralInput<double> myEncoder2;
 
     TimeDomain timedomain;
 };
